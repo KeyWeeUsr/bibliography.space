@@ -1,0 +1,57 @@
+#! = mandatory field
+#? = optional field
+# = comment
+
+#! version of the Yaml structure
+schema: 1
+
+#! uuidgen (will be generated automatically later)
+id: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+
+#! mandatory major fields
+author:
+  #! uuidgen (will be generated automatically later)
+  id: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  #! author's name in English
+  name: Last name, First name Middle name(s)
+  #? name in author's country language
+  originalName: Last name, First name Middle name(s)
+
+title:
+  #! uuidgen (will be generated automatically later)
+  id: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Title
+  #? title in author's country language
+  originalName: Title
+
+#! title's properties
+properties:
+  #! International Standard Book Number (ISBN-13)
+  isbn13: "9780000000000"
+  #! specified by the publisher's last page number
+  pages: 100
+
+  #? ISBN-10
+  isbn10: "0000000000"
+  #? pages + raw page sheets before and after the core
+  rawPages: 108
+  #? major book sections, if any (not chapters)
+  partCount: 1
+  #? major book sections in detail
+  parts:
+    - name: Part One
+      pageStart: 1
+      pageEnd: 100
+
+  #? minor book sections, if any (chapters)
+  chapterCount: 2
+  #? minor book sections in detail
+  chapters:
+    - name: Chapter One
+      pageStart: 1
+      pageEnd: 49
+      part: Part One
+    - name: Chapter Two
+      pageStart: 50
+      pageEnd: 100
+      part: Part One
