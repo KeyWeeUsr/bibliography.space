@@ -35,16 +35,18 @@ properties:
   isbn10: "0000000000"
   #? pages + raw page sheets before and after the core
   rawPages: 108
+
   #? major book sections, if any (not chapters)
   partCount: 1
+  #? minor book sections, if any (chapters)
+  chapterCount: 2
+
   #? major book sections in detail
   parts:
     - name: Part One
       pageStart: 1
       pageEnd: 100
 
-  #? minor book sections, if any (chapters)
-  chapterCount: 2
   #? minor book sections in detail
   chapters:
     - name: Chapter One
