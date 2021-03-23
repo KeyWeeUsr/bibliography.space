@@ -1,6 +1,8 @@
 import re
-from os.path import join, dirname, abspath, basename
+from os import mkdir
+from os.path import join, dirname, abspath, basename, exists
 from glob import glob
+from base64 import b64decode
 
 from yaml import load, dump
 try:
@@ -47,6 +49,24 @@ def tree(context, title="", multiple=False, indent=0):
     return text
 
 
+def image(context):
+    text = ""
+    if not context.get("image", {}).get("content"):
+        return text
+
+    name = context["id"]
+    static = join(TARGET, "_static")
+    if not exists(static):
+        mkdir(static)
+
+    mime = context["image"].get("mime", "image/png").split("/")[-1]
+    with open(join(static, f"{name}.{mime}"), "wb") as file:
+        file.write(b64decode(context["image"]["content"].encode()))
+
+    text += f".. image:: _static/{name}.{mime}\n\n"
+    return text
+
+
 def handle_schema_1(context):
     with open(join(TARGET, f"{context['id']}.rst"), "w") as file:
         author = context["author"]["name"]
@@ -54,6 +74,7 @@ def handle_schema_1(context):
         header = f"{title} ({author})"
         file.write(f"{header}\n")
         file.write("=" * len(header) + "\n\n")
+        file.write(image(context))
         file.write(tree(context["properties"]))
 
 
