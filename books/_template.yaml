@@ -40,6 +40,8 @@ properties:
   partCount: 1
   #? minor book sections, if any (chapters)
   chapterCount: 2
+  #? parts of a chapter if significant and present in ToC
+  subchapterCount: 2
 
   #? major book sections in detail
   parts:
@@ -57,3 +59,14 @@ properties:
       pageStart: 50
       pageEnd: 100
       part: Part One
+
+  #? significant parts of chapters in detail
+  subchapters:
+    - name: Story 1
+      pageStart: 1
+      pageEnd: 25
+      chapter: Chapter One
+    - name: Story 2
+      pageStart: 26
+      pageEnd: 49
+      chapter: Chapter One
