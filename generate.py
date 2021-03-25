@@ -94,12 +94,11 @@ def main():
         create(schema)
         generated[schema["id"]] = schema["title"]["name"]
 
-    with open(join(TARGET, "index.rst"), "w") as file:
-        file.write("Bibliography Space\n")
-        file.write("==================\n")
+    with open(join(TARGET, "global-toc.rst"), "w") as file:
         file.write(".. toctree::\n")
         file.write("   :maxdepth: 2\n")
-        file.write("   :caption: Contents:\n\n")
+        file.write("   :hidden:\n")
+        file.write("   :caption: Books:\n\n")
         for item in sorted(generated, key=lambda item: generated[item]):
             file.write(f"   {item}\n")
 
