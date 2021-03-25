@@ -8,7 +8,14 @@ schema: 1
 #! uuidgen (will be generated automatically later)
 id: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
 
-#! mandatory major fields
+#! mandatory major field
+contributor:
+  id: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  name: Last name, First name Middle name(s)
+  contact: email/account/anything
+  donate: any link or address e.g. PayPal, blockchain coin, etc
+
+#! mandatory major field
 author:
   #! uuidgen (will be generated automatically later)
   id: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
@@ -17,6 +24,7 @@ author:
   #? name in author's country language
   originalName: Last name, First name Middle name(s)
 
+#! mandatory major field
 title:
   #! uuidgen (will be generated automatically later)
   id: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
