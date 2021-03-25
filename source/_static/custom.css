@@ -1,3 +1,7 @@
 .sphinxsidebar {
     font-size: 12px !important;
 }
+
+p {
+    text-align: justify;
+}
