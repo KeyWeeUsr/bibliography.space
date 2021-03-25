@@ -1,45 +1,29 @@
-#! = mandatory field
-#? = optional field
-# = comment
-
-#! version of the Yaml structure
 schema: 1
 
-#! uuidgen (will be generated automatically later)
 id: 1a3f5474-3600-4e8f-8e35-7d0edf5afd10
 
-#! mandatory major fields
+contributor:
+  id: 06687640-0363-42c1-9f23-31315562d6fa
+  name: Badida, Peter
+  contact: keyweeusr@gmail.com
+  donate: https://paypal.me/peterbadida
+
 author:
-  #! uuidgen (will be generated automatically later)
   id: 08660963-24fa-4e16-a887-2fbafe41282b
-  #! author's name in English
   name: Tolstoy, Lev Nikolayevich
-  #? name in author's country language
   originalName: Толстой, Левъ Николаевичъ
 
 title:
-  #! uuidgen (will be generated automatically later)
   id: fc6c852d-5d5d-459b-bdcc-45b3a64f9955
   name: War and Peace
-  #? title in author's country language
   originalName: Война и мир
 
-#! title's properties
 properties:
-  #! International Standard Book Number (ISBN-13)
   isbn13: "9781435169876"
-  #! specified by the publisher's last page number
   pages: 884
-
-  #? ISBN-10
   isbn10: "1435169876"
-  #? pages + raw page sheets before and after the core
   rawPages: 900
-
-  #? major book sections, if any (not chapters)
   partCount: 17
-
-  #? major book sections in detail
   parts:
     - name: Part One
       pageStart: 1

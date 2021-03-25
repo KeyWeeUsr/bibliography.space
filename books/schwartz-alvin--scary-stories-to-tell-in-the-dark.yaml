@@ -2,6 +2,12 @@ schema: 1
 
 id: 48ddc79c-70bc-4416-b5db-1efe39318841
 
+contributor:
+  id: 06687640-0363-42c1-9f23-31315562d6fa
+  name: Badida, Peter
+  contact: keyweeusr@gmail.com
+  donate: https://paypal.me/peterbadida
+
 author:
   id: f6c96565-b5b6-4b8c-923a-e9c1fce2396d
   name: Schwartz, Alvin
