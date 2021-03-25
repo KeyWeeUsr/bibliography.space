@@ -76,6 +76,10 @@ def handle_schema_1(context):
         file.write("=" * len(header) + "\n\n")
         file.write(image(context))
         file.write(tree(context["properties"]))
+        file.write("\n")
+        file.write("Contributed by\n")
+        file.write("--------------\n")
+        file.write(tree(context["contributor"]))
 
 
 def create(context):
