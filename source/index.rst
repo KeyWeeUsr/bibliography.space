@@ -1,6 +1,9 @@
 Bibliography Space
 ==================
 
+.. |github| replace:: GitHub
+.. _github: https://github.com/KeyWeeUsr/bibliography.space
+
 A simple website to list books with properties. Please contribute if you can.
 
 The Why
@@ -40,7 +43,7 @@ How to help
 Contribute
 ~~~~~~~~~~
 
-- Submit new books using ``git`` via GitHub.
+- Submit new books using ``git`` via |github|_.
 - Feel free to also edit already present books and add pictures where are
   missing.
 
