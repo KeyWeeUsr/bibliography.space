@@ -1,0 +1,50 @@
+schema: 1
+
+id: d8d19062-676e-4d45-94f6-991f9e423072
+
+contributor:
+  id: 06687640-0363-42c1-9f23-31315562d6fa
+  name: Badida, Peter
+  contact: keyweeusr@gmail.com
+  donate: https://paypal.me/peterbadida
+
+author:
+  id: 6332b12d-d288-427b-8cf8-812ea93bfcb4
+  name: McConaughey, Matthew
+
+title:
+  id: 1110b370-3573-40fb-b22d-1dbcb1aa9b83
+  name: Greenlights
+
+properties:
+  isbn13: "9780000000000"
+  pages: 291
+  rawPages: 306
+
+  partCount: 8
+
+  parts:
+    - name: part one: outlaw logic
+      pageStart: 16
+      pageEnd: 57
+    - name: part two: find your frequency
+      pageStart: 58
+      pageEnd: 87
+    - name: part three: dirt roads and autobahns
+      pageStart: 88
+      pageEnd: 123
+    - name: part four: the art of running downhill
+      pageStart: 124
+      pageEnd: 173
+    - name: part five: turn the page
+      pageStart: 174
+      pageEnd: 219
+    - name: part six: the arrow doesn't seek the target, the target draws the arrow
+      pageStart: 220
+      pageEnd: 245
+    - name: part seven: be brave, take the hill
+      pageStart: 246
+      pageEnd: 269
+    - name: part eight: live your legacy now
+      pageStart: 270
+      pageEnd: 291
