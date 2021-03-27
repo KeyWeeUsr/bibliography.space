@@ -24,27 +24,27 @@ properties:
   partCount: 8
 
   parts:
-    - name: part one: outlaw logic
+    - name: "part one: outlaw logic"
       pageStart: 16
       pageEnd: 57
-    - name: part two: find your frequency
+    - name: "part two: find your frequency"
       pageStart: 58
       pageEnd: 87
-    - name: part three: dirt roads and autobahns
+    - name: "part three: dirt roads and autobahns"
       pageStart: 88
       pageEnd: 123
-    - name: part four: the art of running downhill
+    - name: "part four: the art of running downhill"
       pageStart: 124
       pageEnd: 173
-    - name: part five: turn the page
+    - name: "part five: turn the page"
       pageStart: 174
       pageEnd: 219
-    - name: part six: the arrow doesn't seek the target, the target draws the arrow
+    - name: "part six: the arrow doesn't seek the target, the target draws the arrow"
       pageStart: 220
       pageEnd: 245
-    - name: part seven: be brave, take the hill
+    - name: "part seven: be brave, take the hill"
       pageStart: 246
       pageEnd: 269
-    - name: part eight: live your legacy now
+    - name: "part eight: live your legacy now"
       pageStart: 270
       pageEnd: 291
