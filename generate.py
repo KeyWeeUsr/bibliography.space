@@ -140,9 +140,11 @@ def api_index():
     with open(join(API_TARGET, "index.txt"), "w") as file:
         file.write("Bibliography Space API\n")
         file.write("======================\n\n")
+        file.write("API base: https://bibliography.rest\n")
         file.write("* GET /book/<uuid>\n")
         file.write("* GET /isbn13/<isbn13>\n")
-        file.write("* GET /isbn10/<isbn10>\n")
+        file.write("* GET /isbn10/<isbn10>\n\n")
+        file.write("See also: https://bibliography.space\n")
 
 
 def main():
