@@ -1,5 +1,7 @@
 import re
-from os import mkdir
+import json
+
+from os import mkdir, symlink
 from os.path import join, dirname, abspath, basename, exists
 from glob import glob
 from base64 import b64decode
@@ -10,9 +12,14 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
-BOOKS = join(dirname(abspath(__file__)), "books")
+FOLDER = dirname(abspath(__file__))
+BOOKS = join(FOLDER, "books")
 IGNORE = ["_template.yaml"]
-TARGET = join(dirname(abspath(__file__)), "source")
+TARGET = join(FOLDER, "source")
+API_TARGET = join(FOLDER, "api")
+API_TARGET_ID = join(API_TARGET, "item")
+API_TARGET_ISBN13 = join(API_TARGET, "isbn13")
+API_TARGET_ISBN10 = join(API_TARGET, "isbn10")
 
 
 def tree(context, title="", multiple=False, indent=0):
@@ -82,12 +89,43 @@ def handle_schema_1(context):
         file.write(tree(context["contributor"]))
 
 
+def apify_schema_1(context):
+    main_file = join(API_TARGET_ID, context["id"])
+    if exists(main_file):
+        print(f"Collision between IDs: {main_file!r}")
+        return
+
+    with open(main_file, "w") as file:
+        json.dump(context, file, indent=4)
+    props = context["properties"]
+
+    if "isbn13" in props:
+        dest = props["isbn13"]
+        if dest != "9780000000000":
+            symlink(main_file, join(API_TARGET_ISBN13, dest))
+
+    if "isbn10" in props:
+        dest = props["isbn10"]
+        if dest != "0000000000":
+            symlink(main_file, join(API_TARGET_ISBN10, dest))
+
+
 def create(context):
     if context["schema"] == 1:
         handle_schema_1(context)
 
 
+def apify(context):
+    if context["schema"] == 1:
+        apify_schema_1(context)
+
+
 def main():
+    for fol in API_TARGET, API_TARGET_ID, API_TARGET_ISBN13, API_TARGET_ISBN10:
+        if exists(fol):
+            continue
+        mkdir(fol)
+
     generated = {}
     for item in glob(f"{BOOKS}/*.yaml"):
         if basename(item) in IGNORE:
@@ -96,6 +134,7 @@ def main():
             data = file.read()
         schema = load(data, Loader=Loader)
         create(schema)
+        apify(schema)
         generated[schema["id"]] = schema["title"]["name"]
 
     with open(join(TARGET, "global-toc.rst"), "w") as file:
