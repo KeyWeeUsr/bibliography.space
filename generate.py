@@ -120,6 +120,25 @@ def apify(context):
         apify_schema_1(context)
 
 
+def global_toc(generated):
+    with open(join(TARGET, "global-toc.rst"), "w") as file:
+        file.write(".. toctree::\n")
+        file.write("   :maxdepth: 2\n")
+        file.write("   :hidden:\n")
+        file.write("   :caption: Books:\n\n")
+        for item in sorted(generated, key=lambda item: generated[item]):
+            file.write(f"   {item}\n")
+
+
+def api_index():
+    with open(join(API_TARGET, "index.txt"), "w") as file:
+        file.write("Bibliography Space API\n")
+        file.write("======================\n\n")
+        file.write("* GET /item/<uuid>\n")
+        file.write("* GET /isbn13/<isbn13>\n")
+        file.write("* GET /isbn10/<isbn10>\n")
+
+
 def main():
     for fol in API_TARGET, API_TARGET_ID, API_TARGET_ISBN13, API_TARGET_ISBN10:
         if exists(fol):
@@ -137,13 +156,8 @@ def main():
         apify(schema)
         generated[schema["id"]] = schema["title"]["name"]
 
-    with open(join(TARGET, "global-toc.rst"), "w") as file:
-        file.write(".. toctree::\n")
-        file.write("   :maxdepth: 2\n")
-        file.write("   :hidden:\n")
-        file.write("   :caption: Books:\n\n")
-        for item in sorted(generated, key=lambda item: generated[item]):
-            file.write(f"   {item}\n")
+    global_toc(generated)
+    api_index()
 
 
 if __name__ == "__main__":
