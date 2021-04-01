@@ -17,7 +17,7 @@ BOOKS = join(FOLDER, "books")
 IGNORE = ["_template.yaml"]
 TARGET = join(FOLDER, "source")
 API_TARGET = join(FOLDER, "api")
-API_TARGET_ID = join(API_TARGET, "item")
+API_TARGET_ID = join(API_TARGET, "book")
 API_TARGET_ISBN13 = join(API_TARGET, "isbn13")
 API_TARGET_ISBN10 = join(API_TARGET, "isbn10")
 
@@ -140,7 +140,7 @@ def api_index():
     with open(join(API_TARGET, "index.txt"), "w") as file:
         file.write("Bibliography Space API\n")
         file.write("======================\n\n")
-        file.write("* GET /item/<uuid>\n")
+        file.write("* GET /book/<uuid>\n")
         file.write("* GET /isbn13/<isbn13>\n")
         file.write("* GET /isbn10/<isbn10>\n")
 
