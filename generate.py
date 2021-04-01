@@ -2,7 +2,7 @@ import re
 import json
 
 from os import mkdir, symlink
-from os.path import join, dirname, abspath, basename, exists
+from os.path import join, dirname, abspath, basename, exists, relpath
 from glob import glob
 from base64 import b64decode
 
@@ -102,12 +102,18 @@ def apify_schema_1(context):
     if "isbn13" in props:
         dest = props["isbn13"]
         if dest != "9780000000000":
-            symlink(main_file, join(API_TARGET_ISBN13, dest))
+            symlink(
+                relpath(main_file, start=API_TARGET_ISBN13),
+                join(API_TARGET_ISBN13, dest)
+            )
 
     if "isbn10" in props:
         dest = props["isbn10"]
         if dest != "0000000000":
-            symlink(main_file, join(API_TARGET_ISBN10, dest))
+            symlink(
+                relpath(main_file, start=API_TARGET_ISBN10),
+                join(API_TARGET_ISBN10, dest)
+            )
 
 
 def create(context):
