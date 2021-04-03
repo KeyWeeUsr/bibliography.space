@@ -126,14 +126,25 @@ def apify(context):
         apify_schema_1(context)
 
 
+def global_books(generated):
+    with open(join(TARGET, "global-books.rst"), "w") as file:
+        file.write("Books\n")
+        file.write("=====\n\n")
+        file.write(".. toctree::\n")
+        file.write("   :maxdepth: 1\n")
+        file.write("   :titlesonly:\n\n")
+        for item in sorted(generated, key=lambda item: generated[item]):
+            file.write(f"   {item}\n")
+
+
 def global_toc(generated):
+    global_books(generated)
+
     with open(join(TARGET, "global-toc.rst"), "w") as file:
         file.write(".. toctree::\n")
         file.write("   :maxdepth: 2\n")
-        file.write("   :hidden:\n")
-        file.write("   :caption: Books:\n\n")
-        for item in sorted(generated, key=lambda item: generated[item]):
-            file.write(f"   {item}\n")
+        file.write("   :hidden:\n\n")
+        file.write("   global-books\n")
 
 
 def api_index():
