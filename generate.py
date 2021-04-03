@@ -176,8 +176,8 @@ def apify_author_full(aid, children):
 
 def global_books(books):
     sorted_books = sorted(
-        generated,
-        key=lambda item: generated[item]["title"]["name"]
+        books,
+        key=lambda item: books[item]["title"]["name"]
     )
     content = "\n".join([f"   {item}" for item in sorted_books])
 
