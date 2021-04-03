@@ -80,7 +80,7 @@ def image(context):
     return text
 
 
-def handle_schema_1(context):
+def book_schema_1(context):
     with open(join(TARGET, f"{context['id']}.rst"), "w") as file:
         author = context["author"]["name"]
         title = context["title"]["name"]
@@ -94,7 +94,7 @@ def handle_schema_1(context):
         file.write(tree(context["contributor"]))
 
 
-def apify_schema_1(context):
+def apify_book_schema_1(context):
     main_file = join(API_TARGET_ID, context["id"])
     if exists(main_file):
         print(f"Collision between IDs: {main_file!r}")
@@ -121,14 +121,14 @@ def apify_schema_1(context):
             )
 
 
-def create(context):
+def create_book(context):
     if context["schema"] == 1:
-        handle_schema_1(context)
+        book_schema_1(context)
 
 
-def apify(context):
+def apify_book(context):
     if context["schema"] == 1:
-        apify_schema_1(context)
+        apify_book_schema_1(context)
 
 
 def global_books(generated):
