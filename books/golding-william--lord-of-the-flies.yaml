@@ -1,0 +1,40 @@
+schema: 1
+id: 67fe511e-334e-4d77-a641-205dc771f88a
+
+contributor:
+  id: 06687640-0363-42c1-9f23-31315562d6fa
+  name: Badida, Peter
+  contact: keyweeusr@gmail.com
+  donate: https://paypal.me/peterbadida
+
+author:
+  id: 15db68a5-adee-4819-93cc-54a52848a324
+  name: Golding, William
+
+title:
+  id: 302324cd-9363-487d-a8d7-0fa3ac94c9a8
+  name: Lord of the Flies
+
+properties:
+  isbn13: "9780571056865"
+  isbn10: "0571056865"
+  pages: 224
+
+  chapterCount: 15
+
+  chapters:
+    - name: Acknowledgments
+    - name: Foreword
+    - name: Introduction
+    - name: Chapter One. The Sound of the Shell
+    - name: Chapter Two. Fire on the Mountain
+    - name: Chapter Three. Huts on the Beach
+    - name: Chapter Four. Painted Faces and Long Hair
+    - name: Chapter Five. Beast from Water
+    - name: Chapter Six. Beast from Air
+    - name: Chapter Seven. Shadows and Tall Trees
+    - name: Chapter Eight. Gift for the Darkness
+    - name: Chapter Nine. A View to a Death
+    - name: Chapter Ten. The Shell and the Glasses
+    - name: Chapter Eleven. Castle Rock
+    - name: Chapter Twelve. Cry of the Hunters
