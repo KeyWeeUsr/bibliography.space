@@ -83,9 +83,11 @@ def image(context):
 
 
 def book_schema_1(context):
-    with open(join(TARGET, f"{context['id']}.rst"), "w") as file:
+    item_id = context["id"]
+    with open(join(TARGET, f"{item_id}.rst"), "w") as file:
         author = context["author"]["name"]
         title = context["title"]["name"]
+        file.write(f".. _{item_id}:\n\n")
         file.write(f"{title}\n")
         file.write("=" * len(title) + "\n\n")
         file.write(image(context))
@@ -142,11 +144,12 @@ def create_author(aid, children):
     assert aid == author["id"], (aid, author)
 
     bullets = "\n".join([
-        f"*   `{item['title']['name']} <{item['id']}>`_"
+        f"*   :ref:`{item['id']}`"
         for item in sorted(children, key=lambda item: item["title"]["name"])
     ])
     with open(dest, "w") as file:
         name = author["name"]
+        file.write(f".. _{aid}:\n\n")
         file.write(f"{name}\n")
         file.write("=" * len(name) + "\n\n")
         file.write(bullets)
