@@ -127,23 +127,46 @@ def apify(context):
 
 
 def global_books(generated):
+    sorted_books = sorted(
+        generated,
+        key=lambda item: generated[item]["title"]["name"]
+    )
+    content = "\n".join([f"   {item}" for item in sorted_books])
+
     with open(join(TARGET, "global-books.rst"), "w") as file:
         file.write("Books\n")
         file.write("=====\n\n")
         file.write(".. toctree::\n")
         file.write("   :maxdepth: 1\n")
         file.write("   :titlesonly:\n\n")
-        for item in sorted(generated, key=lambda item: generated[item]):
-            file.write(f"   {item}\n")
+        file.write(content)
+
+
+def global_authors(generated):
+    sorted_authors = sorted(
+        generated,
+        key=lambda item: generated[item]["author"]["name"]
+    )
+    content = "\n".join([f"   {item}" for item in sorted_authors])
+
+    with open(join(TARGET, "global-authors.rst"), "w") as file:
+        file.write("Authors\n")
+        file.write("=======\n\n")
+        file.write(".. toctree::\n")
+        file.write("   :maxdepth: 1\n")
+        file.write("   :titlesonly:\n\n")
+        file.write(content)
 
 
 def global_toc(generated):
     global_books(generated)
+    global_authors(generated)
 
     with open(join(TARGET, "global-toc.rst"), "w") as file:
         file.write(".. toctree::\n")
         file.write("   :maxdepth: 2\n")
         file.write("   :hidden:\n\n")
+        file.write("   global-authors\n")
         file.write("   global-books\n")
 
 
@@ -173,7 +196,7 @@ def main():
         schema = load(data, Loader=Loader)
         create(schema)
         apify(schema)
-        generated[schema["id"]] = schema["title"]["name"]
+        generated[schema["id"]] = schema
 
     global_toc(generated)
     api_index()
