@@ -1,0 +1,41 @@
+schema: 1
+id: 00db0e98-57ea-4f1c-be8d-e433eac8b617
+
+contributor:
+  id: 06687640-0363-42c1-9f23-31315562d6fa
+  name: Badida, Peter
+  contact: keyweeusr@gmail.com
+  donate: https://paypal.me/peterbadida
+
+author:
+  id: 15db68a5-adee-4819-93cc-54a52848a324
+  name: Golding, William
+
+title:
+  id: 10b9e433-4a1a-4935-afe4-a687c62dfc3d
+  name: "The Paper Men: With an introduction by Andrew Martin"
+
+properties:
+  isbn13: "9780571298488"
+  isbn10: "0571298488"
+  pages: 272
+
+  chapterCount: 17
+  chapters:
+    - name: Introduction by Andrew Martin
+    - name: Chapter I
+    - name: Chapter II
+    - name: Chapter III
+    - name: Chapter IV
+    - name: Chapter V
+    - name: Chapter VI
+    - name: Chapter VII
+    - name: Chapter VIII
+    - name: Chapter IX
+    - name: Chapter X
+    - name: Chapter XI
+    - name: Chapter XII
+    - name: Chapter XIII
+    - name: Chapter XIV
+    - name: Chapter XV
+    - name: Chapter XVI
