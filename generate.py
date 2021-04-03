@@ -20,11 +20,13 @@ TARGET = join(FOLDER, "source")
 API_TARGET = join(FOLDER, "api")
 API_TARGET_BOOK = join(API_TARGET, "book")
 API_TARGET_AUTHOR = join(API_TARGET, "author")
+API_TARGET_CHECK = join(API_TARGET, "check-id")
 API_TARGET_ISBN13 = join(API_TARGET, "isbn13")
 API_TARGET_ISBN10 = join(API_TARGET, "isbn10")
 API_DIRS = [
     API_TARGET, API_TARGET_BOOK, API_TARGET_AUTHOR,
-    API_TARGET_ISBN13, API_TARGET_ISBN10
+    API_TARGET_ISBN13, API_TARGET_ISBN10,
+    API_TARGET_CHECK
 ]
 
 
@@ -245,6 +247,24 @@ def read_books(callbacks: list):
     return output
 
 
+def api_check_index(generated):
+    for author_id in generated["authors"]:
+        symlink(
+            relpath(
+                join(API_TARGET_AUTHOR, author_id),
+                start=API_TARGET_CHECK
+            ),
+            join(API_TARGET_CHECK, author_id)
+        )
+    for book_id in generated["books"]:
+        symlink(
+            relpath(
+                join(API_TARGET_BOOK, book_id),
+                start=API_TARGET_CHECK
+            ),
+            join(API_TARGET_CHECK, book_id)
+        )
+
 def main():
     [mkdir(fol) for fol in API_DIRS if not exists(fol)]
 
@@ -256,6 +276,7 @@ def main():
 
     global_toc(generated)
     api_index()
+    api_check_index(generated)
 
 
 if __name__ == "__main__":
