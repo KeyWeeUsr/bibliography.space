@@ -5,6 +5,7 @@ from os import mkdir, symlink
 from os.path import join, dirname, abspath, basename, exists, relpath
 from glob import glob
 from base64 import b64decode
+from collections import defaultdict
 
 from yaml import load, dump
 try:
@@ -20,6 +21,10 @@ API_TARGET = join(FOLDER, "api")
 API_TARGET_ID = join(API_TARGET, "book")
 API_TARGET_ISBN13 = join(API_TARGET, "isbn13")
 API_TARGET_ISBN10 = join(API_TARGET, "isbn10")
+API_DIRS = [
+    API_TARGET, API_TARGET_ID,
+    API_TARGET_ISBN13, API_TARGET_ISBN10
+]
 
 
 def tree(context, title="", multiple=False, indent=0):
@@ -181,22 +186,26 @@ def api_index():
         file.write("See also: https://bibliography.space\n")
 
 
-def main():
-    for fol in API_TARGET, API_TARGET_ID, API_TARGET_ISBN13, API_TARGET_ISBN10:
-        if exists(fol):
-            continue
-        mkdir(fol)
+def read_books(callbacks: list):
+    output = {"books": {}, "authors": defaultdict(list)}
 
-    generated = {}
     for item in glob(f"{BOOKS}/*.yaml"):
         if basename(item) in IGNORE:
             continue
         with open(join(BOOKS, item)) as file:
             data = file.read()
         schema = load(data, Loader=Loader)
-        create(schema)
-        apify(schema)
-        generated[schema["id"]] = schema
+        for cbk in callbacks:
+            cbk(schema)
+        output["books"][schema["id"]] = schema
+        output["authors"][schema["author"]["id"]].append(schema)
+    return output
+
+
+def main():
+    [mkdir(fol) for fol in API_DIRS if not exists(fol)]
+
+    generated = read_books(callbacks=[create_book, apify_book])
 
     global_toc(generated)
     api_index()
