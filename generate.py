@@ -190,12 +190,12 @@ def global_books(books):
         file.write(content)
 
 
-def global_authors(generated):
+def global_authors(authors):
     sorted_authors = sorted(
-        generated,
-        key=lambda item: generated[item]["author"]["name"]
+        authors,
+        key=lambda item: authors[item][0]["author"]["name"]
     )
-    content = "\n".join([f"   {item}" for item in sorted_authors])
+    content = "\n".join([f"   {aid}" for aid in sorted_authors])
 
     with open(join(TARGET, "global-authors.rst"), "w") as file:
         file.write("Authors\n")
@@ -207,8 +207,8 @@ def global_authors(generated):
 
 
 def global_toc(generated):
-    global_books(generated)
-    global_authors(generated)
+    global_books(generated["books"])
+    global_authors(generated["authors"])
 
     with open(join(TARGET, "global-toc.rst"), "w") as file:
         file.write(".. toctree::\n")
