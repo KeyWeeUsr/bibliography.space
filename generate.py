@@ -250,6 +250,10 @@ def main():
 
     generated = read_books(callbacks=[create_book, apify_book])
 
+    for author, books in generated["authors"].items():
+        create_author(author, books)
+        apify_author(author, books)
+
     global_toc(generated)
     api_index()
 
