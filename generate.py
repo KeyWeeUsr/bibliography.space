@@ -131,7 +131,50 @@ def apify_book(context):
         apify_book_schema_1(context)
 
 
-def global_books(generated):
+def create_author(aid, children):
+    dest = join(TARGET, f"{aid}.rst")
+    if exists(dest):
+        raise Exception(f"Collision between IDs: {dest!r}")
+
+    author = children[0]["author"]
+    assert aid == author["id"], (aid, author)
+
+    bullets = "\n".join([
+        f"*   `{item['title']['name']} <{item['id']}>`_"
+        for item in sorted(children, key=lambda item: item["title"]["name"])
+    ])
+    with open(dest, "w") as file:
+        name = author["name"]
+        file.write(f"{name}\n")
+        file.write("=" * len(name) + "\n\n")
+        file.write(bullets)
+
+
+def apify_author(aid, children):
+    main_file = join(API_TARGET_AUTHOR, aid)
+    if exists(main_file):
+        raise Exception(f"Collision between IDs: {dest!r}")
+
+    response = children[0]["author"]
+    response["books"] = [item["id"] for item in children]
+
+    with open(main_file, "w") as file:
+        json.dump(response, file, indent=4)
+
+
+def apify_author_full(aid, children):
+    main_file = join(API_TARGET_AUTHOR, aid)
+    if exists(main_file):
+        raise Exception(f"Collision between IDs: {dest!r}")
+
+    response = children[0]["author"]
+    response["books"] = [item["id"] for item in children]
+
+    with open(main_file, "w") as file:
+        json.dump(response, file, indent=4)
+
+
+def global_books(books):
     sorted_books = sorted(
         generated,
         key=lambda item: generated[item]["title"]["name"]
