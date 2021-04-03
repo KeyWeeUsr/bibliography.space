@@ -18,12 +18,12 @@ BOOKS = join(FOLDER, "books")
 IGNORE = ["_template.yaml"]
 TARGET = join(FOLDER, "source")
 API_TARGET = join(FOLDER, "api")
-API_TARGET_ID = join(API_TARGET, "book")
+API_TARGET_BOOK = join(API_TARGET, "book")
 API_TARGET_AUTHOR = join(API_TARGET, "author")
 API_TARGET_ISBN13 = join(API_TARGET, "isbn13")
 API_TARGET_ISBN10 = join(API_TARGET, "isbn10")
 API_DIRS = [
-    API_TARGET, API_TARGET_ID, API_TARGET_AUTHOR,
+    API_TARGET, API_TARGET_BOOK, API_TARGET_AUTHOR,
     API_TARGET_ISBN13, API_TARGET_ISBN10
 ]
 
@@ -95,7 +95,7 @@ def book_schema_1(context):
 
 
 def apify_book_schema_1(context):
-    main_file = join(API_TARGET_ID, context["id"])
+    main_file = join(API_TARGET_BOOK, context["id"])
     if exists(main_file):
         print(f"Collision between IDs: {main_file!r}")
         return
