@@ -84,9 +84,8 @@ def handle_schema_1(context):
     with open(join(TARGET, f"{context['id']}.rst"), "w") as file:
         author = context["author"]["name"]
         title = context["title"]["name"]
-        header = f"{title} ({author})"
-        file.write(f"{header}\n")
-        file.write("=" * len(header) + "\n\n")
+        file.write(f"{title}\n")
+        file.write("=" * len(title) + "\n\n")
         file.write(image(context))
         file.write(tree(context["properties"]))
         file.write("\n")
