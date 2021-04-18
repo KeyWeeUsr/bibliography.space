@@ -1,0 +1,56 @@
+schema: 1
+
+id: 6cc699d0-afea-4d8b-b6a4-e4371524d712
+
+contributor:
+  id: c7abbe68-808c-41e7-a549-42f81d190a8f
+  name: Kovac, Maros
+  contact: "@nephyx"
+  donate: https://paypal.me/maroskovac
+
+author:
+  id: 6fb062bb-6867-495c-8b5d-49a91f9e1987
+  name: Puzo, Mario Gianluigi
+
+title:
+  id: dea5a958-4250-4b74-9662-d2f65e8758e0
+  name: The Godfather
+
+properties:
+  isbn13: "9780099528128"
+  pages: 595
+
+  #? major book sections, if any (not chapters)
+  partCount: 9
+  #? minor book sections, if any (chapters)
+  chapterCount: 32
+
+  #? major book sections in detail
+  parts:
+    - name: Book I
+      pageStart: 1
+      pageEnd: 199
+    - name: Book II
+      pageStart: 201
+      pageEnd: 251
+    - name: Book III
+      pageStart: 253
+      pageEnd: 300
+    - name: Book IV
+      pageStart: 301
+      pageEnd: 363
+    - name: Book V
+      pageStart: 365
+      pageEnd: 428
+    - name: Book VI
+      pageStart: 429
+      pageEnd: 472
+    - name: Book VII
+      pageStart: 473
+      pageEnd: 552
+    - name: Book VIII
+      pageStart: 553
+      pageEnd: 584
+    - name: Book IX
+      pageStart: 585
+      pageEnd: 595
