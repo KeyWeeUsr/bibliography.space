@@ -49,7 +49,7 @@ GitHub
 
    .. note:: ``404`` for *your* UUID means it's OK to use
 
-#. Name the file as ``<id field>.yaml``
+#. Name the file as ``<author>--<title>.yaml``
 #. Submit the form as a new pull request
 #. Wait for review and merge
 #. Enjoy :)
@@ -73,7 +73,7 @@ Git (CLI)
 
    .. note:: ``404`` for *your* UUID means it's OK to use
 
-#. Copy the template to a file named by the generated UUID + ``.yaml``
+#. Copy the template to a file named ``<author>--<title>.yaml``
 #. Fill the fields (GitHub note for reference)
 #. `Commit <https://www.git-scm.com/docs/git-commit>`_ the new file
 #. `Push <https://www.git-scm.com/docs/git-push>`_ the changes to your
